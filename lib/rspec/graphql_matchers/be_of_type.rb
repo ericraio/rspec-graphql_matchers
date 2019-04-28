@@ -15,7 +15,6 @@ module RSpec
         else
           @sample.type
         end
-        @type = @type.to_s.split("::")[-1]
         @type == @expected.to_s
       end
 
