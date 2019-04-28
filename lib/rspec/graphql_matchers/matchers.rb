@@ -1,4 +1,5 @@
 require 'rspec/matchers'
+require 'rspec/graphql_matchers/be_null_type'
 require 'rspec/graphql_matchers/be_of_type'
 require 'rspec/graphql_matchers/accept_arguments'
 require 'rspec/graphql_matchers/have_a_field'
@@ -6,6 +7,10 @@ require 'rspec/graphql_matchers/implement'
 
 module RSpec
   module Matchers
+    def be_null_type
+      RSpec::GraphqlMatchers::BeNullType.new
+    end
+
     def be_of_type(expected)
       RSpec::GraphqlMatchers::BeOfType.new(expected)
     end
