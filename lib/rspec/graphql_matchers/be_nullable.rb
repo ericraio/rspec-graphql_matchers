@@ -1,16 +1,16 @@
 module RSpec
   module GraphqlMatchers
-    class BeNullType
+    class BeNullable
       attr_reader :sample
 
       def matches?(actual_sample)
         @sample = actual_sample
-        @sample.type.class.to_s != "GraphQL::Schema::NonNull" && @subject.class.to_s == "GraphQL::Schema::Field"
+        @sample.type.class.to_s != "GraphQL::Schema::NonNull" && @sample.class.to_s == "GraphQL::Schema::Field"
       end
 
       def failure_message
-        "expected field '#{field_name(sample)}' to be of type '#{expected}', " \
-        "but it was '#{sample.type}'"
+        "expected field '#{field_name(sample)}' to be nullable, " \
+        "but it was NonNull"
       end
 
       def description

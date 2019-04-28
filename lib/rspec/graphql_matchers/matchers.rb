@@ -7,8 +7,8 @@ require 'rspec/graphql_matchers/implement'
 
 module RSpec
   module Matchers
-    def be_null_type
-      RSpec::GraphqlMatchers::BeNullType.new
+    def be_nullable
+      RSpec::GraphqlMatchers::BeNullable.new
     end
 
     def be_of_type(expected)
