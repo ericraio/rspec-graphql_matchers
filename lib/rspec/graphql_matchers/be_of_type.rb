@@ -9,7 +9,13 @@ module RSpec
 
       def matches?(actual_sample)
         @sample = actual_sample
-        @type = (@sample.type.is_a?(Class) ? @sample.type : @sample.type.of_type).to_s.split("::")[-1]
+        @type = case @sample.type.class
+        when GraphQL::Schema::NonNull
+          @sample.type.of_type
+        else
+          @sample.type
+        end
+        @type = @type.to_s.split("::")[-1]
         @type == @expected.to_s
       end
 
