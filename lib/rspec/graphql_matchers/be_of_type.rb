@@ -15,7 +15,8 @@ module RSpec
         else
           @sample.type
         end
-        @type.to_s == @expected.to_s
+        @type = @type.to_s.split("GraphQL::Types::")[-1]
+        @type == @expected.to_s
       end
 
       def failure_message
