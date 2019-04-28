@@ -1,5 +1,5 @@
 require 'rspec/matchers'
-require 'rspec/graphql_matchers/be_null_type'
+require 'rspec/graphql_matchers/be_nullable'
 require 'rspec/graphql_matchers/be_of_type'
 require 'rspec/graphql_matchers/accept_arguments'
 require 'rspec/graphql_matchers/have_a_field'
