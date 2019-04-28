@@ -9,13 +9,13 @@ module RSpec
 
       def matches?(actual_sample)
         @sample = actual_sample
-        @type = case @sample.type.class
-        when GraphQL::Schema::NonNull
+        @type = case @sample.type.class.to_s
+        when "GraphQL::Schema::NonNull"
           @sample.type.of_type
         else
           @sample.type
         end
-        @type == @expected.to_s
+        @type.to_s == @expected.to_s
       end
 
       def failure_message
