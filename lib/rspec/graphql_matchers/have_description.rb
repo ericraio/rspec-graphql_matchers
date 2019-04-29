@@ -9,12 +9,18 @@ module RSpec
 
       def matches?(actual_sample)
         @sample = actual_sample.description
+        return false if @sample.nil?
         @sample == @expected.to_s
       end
 
       def failure_message
-        "expected field '#{field_name(sample)}' have description '#{expected}', " \
-        "but it was '#{sample}'"
+        if sample.present?
+          "expected field '#{field_name(sample)}' have description '#{expected}', " \
+          "but it was '#{sample}'"
+        else
+          "expected field to have description '#{expected}', " \
+          "but the field was nil"
+        end
       end
 
       def description
