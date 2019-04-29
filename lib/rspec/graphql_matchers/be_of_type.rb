@@ -8,13 +8,8 @@ module RSpec
       end
 
       def matches?(actual_sample)
-        @sample = actual_sample
-        @type = case @sample.type.class.to_s
-        when "GraphQL::Schema::NonNull"
-          @sample.type.of_type
-        else
-          @sample.type
-        end
+        @samplej= actual_sample
+        @type = get_type(@sample.type)
         @type = @type.to_s.split("GraphQL::Types::")[-1]
         @type == @expected.to_s
       end
@@ -29,6 +24,17 @@ module RSpec
       end
 
       private
+
+      def get_type(type)
+        case type.class.to_s
+        when "GraphQL::Schema::NonNull"
+          @sample.type.of_type
+        when "GraphQL::Schema::List"
+          get_type(@sample.type.of_type)
+        else
+          @sample.type
+        end
+      end
 
       def field_name(field)
         field.respond_to?(:name) && field.name || field.inspect
