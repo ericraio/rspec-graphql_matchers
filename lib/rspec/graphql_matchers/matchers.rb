@@ -1,6 +1,7 @@
 require 'rspec/matchers'
 require 'rspec/graphql_matchers/be_nullable'
 require 'rspec/graphql_matchers/be_of_type'
+require 'rspec/graphql_matchers/be_a_connection'
 require 'rspec/graphql_matchers/accept_arguments'
 require 'rspec/graphql_matchers/have_a_field'
 require 'rspec/graphql_matchers/have_description'
@@ -9,6 +10,10 @@ require 'rspec/graphql_matchers/implement'
 
 module RSpec
   module Matchers
+    def be_a_connection
+      RSpec::GraphqlMatchers::BeAConnection.new
+    end
+
     def be_nullable
       RSpec::GraphqlMatchers::BeNullable.new
     end
