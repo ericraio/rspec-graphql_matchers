@@ -29,7 +29,8 @@ module RSpec
         end
 
         @type = @type.to_s.split("GraphQL::Types::")[-1]
-        @type == @expected.to_s
+        @expected = @expected.to_s.split("GraphQL::Types::")[-1]
+        @type == @expected
       end
 
       def failure_message
