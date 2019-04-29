@@ -19,6 +19,16 @@ module RSpec
         end
       end
 
+      def failure_message_when_negated
+        if sample.present?
+          "expected field '#{field_name(sample)}' to not be nullable, " \
+          "but it was nullable"
+        else
+          "expected field to not be nullable, " \
+          "but the field was nil"
+        end
+      end
+
       def description
         "be null type"
       end
