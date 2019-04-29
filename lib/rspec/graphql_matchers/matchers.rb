@@ -4,6 +4,7 @@ require 'rspec/graphql_matchers/be_of_type'
 require 'rspec/graphql_matchers/accept_arguments'
 require 'rspec/graphql_matchers/have_a_field'
 require 'rspec/graphql_matchers/have_description'
+require 'rspec/graphql_matchers/have_value'
 require 'rspec/graphql_matchers/implement'
 
 module RSpec
@@ -20,6 +21,10 @@ module RSpec
       RSpec::GraphqlMatchers::AcceptArguments.new(expected_args)
     end
     alias accept_argument accept_arguments
+
+    def have_value(expected)
+      RSpec::GraphqlMatchers::HaveValue.new(expected)
+    end
 
     def have_description(expected)
       RSpec::GraphqlMatchers::HaveDescription.new(expected)

@@ -1,6 +1,6 @@
 module RSpec
   module GraphqlMatchers
-    class HaveDescription
+    class HaveFieldDescription
       attr_reader :sample, :expected
 
       def initialize(expected)
