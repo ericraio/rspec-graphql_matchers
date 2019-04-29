@@ -9,6 +9,7 @@ module RSpec
 
       def matches?(actual_sample)
         @sample = actual_sample
+        return false if @sample.nil?
         @type = case @sample.type.class.to_s
         when "GraphQL::Schema::NonNull"
           if @sample.type.of_type.class.to_s == "GraphQL::Schema::List"
@@ -34,8 +35,13 @@ module RSpec
       end
 
       def failure_message
-        "expected field '#{field_name(sample)}' to be of type '#{expected}', " \
-        "but it was '#{sample.type}'"
+        if sample.present?
+          "expected field '#{field_name(sample)}' to be of type '#{expected}', " \
+          "but it was '#{sample.type}'"
+        else
+          "expected field to be of type '#{expected}', " \
+          "but the field was nil"
+        end
       end
 
       def description
