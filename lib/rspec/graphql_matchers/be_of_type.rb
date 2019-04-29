@@ -11,7 +11,16 @@ module RSpec
         @sample = actual_sample
         @type = case @sample.type.class.to_s
         when "GraphQL::Schema::NonNull"
-          @sample.type.of_type
+          if @sample.type.of_type.class.to_s == "GraphQL::Schema::List"
+            @expected = @expected[0]
+            if @sample.type.of_type.of_type.class.to_s == "GraphQL::Schema::NonNull"
+              @sample.type.of_type.of_type.of_type
+            else
+              @sample.type.of_type.of_type
+            end
+          else
+            @sample.type.of_type
+          end
         when "GraphQL::Schema::List"
           @sample.type.of_type.of_type
           @expected = @expected[0]
