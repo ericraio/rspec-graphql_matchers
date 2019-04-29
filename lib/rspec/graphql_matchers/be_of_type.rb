@@ -8,7 +8,7 @@ module RSpec
       end
 
       def matches?(actual_sample)
-        @samplej= actual_sample
+        @sample = actual_sample
         @type = get_type(@sample.type)
         @type = @type.to_s.split("GraphQL::Types::")[-1]
         @type == @expected.to_s
