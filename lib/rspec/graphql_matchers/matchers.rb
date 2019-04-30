@@ -8,6 +8,7 @@ require 'rspec/graphql_matchers/have_a_field'
 require 'rspec/graphql_matchers/have_description'
 require 'rspec/graphql_matchers/have_value'
 require 'rspec/graphql_matchers/have_orphan_types'
+require 'rspec/graphql_matchers/have_object_class'
 require 'rspec/graphql_matchers/have_input_object_class'
 require 'rspec/graphql_matchers/implement'
 
@@ -36,6 +37,10 @@ module RSpec
 
     def have_orphan_types(*expected)
       RSpec::GraphqlMatchers::HaveOrphanTypes.new(expected)
+    end
+
+    def have_object_class(expected)
+      RSpec::GraphqlMatchers::HaveObjectClass.new(expected)
     end
 
     def have_input_object_class(expected)
