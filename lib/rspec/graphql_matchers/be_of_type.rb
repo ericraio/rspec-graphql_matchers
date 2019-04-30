@@ -13,7 +13,6 @@ module RSpec
         @type = case @sample.type.class.to_s
         when "GraphQL::Schema::NonNull"
           if @sample.type.of_type.class.to_s == "GraphQL::Schema::List"
-            @expected = @expected[0]
             if @sample.type.of_type.of_type.class.to_s == "GraphQL::Schema::NonNull"
               @sample.type.of_type.of_type.of_type
             else
@@ -24,13 +23,13 @@ module RSpec
           end
         when "GraphQL::Schema::List"
           @sample.type.of_type.of_type
-          @expected = @expected[0]
         else
           @sample.type
         end
 
-        @type = @type.to_s.split("GraphQL::Types::")[-1]
+        @expected = @expected.is_a?(Array) ? @expected[0] : @expected
         @expected = @expected.to_s.split("GraphQL::Types::")[-1]
+        @type = @type.to_s.split("GraphQL::Types::")[-1]
         @type == @expected
       end
 
