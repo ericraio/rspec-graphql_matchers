@@ -25,7 +25,7 @@ module RSpec
       end
 
       def description
-        "be of type '#{expected}'"
+        "have description '#{expected}'"
       end
 
       private
