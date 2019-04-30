@@ -6,11 +6,7 @@ module RSpec
       def matches?(actual_sample)
         @sample = actual_sample
         return false if @sample.nil?
-        if @sample.type.class.to_s == "GraphQL::Schema::List"
-          @sample.type.of_type.class.to_s == "GraphQL::Schema::NonNull" && @sample.class.to_s == "GraphQL::Schema::Argument"
-        else
-          @sample.type.class.to_s == "GraphQL::Schema::NonNull" && @sample.class.to_s == "GraphQL::Schema::Argument"
-        end
+        !@sample.instance_variable_get("@null")
       end
 
       def failure_message
