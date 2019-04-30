@@ -1,26 +1,26 @@
 module RSpec
   module GraphqlMatchers
-    class HaveDescription
-      attr_reader :sample, :expected, :description
+    class HaveOrphanTypes
+      attr_reader :sample, :expected, :orphan_types
 
-      def initialize(expected)
+      def initialize(*expected)
         @expected = expected
       end
 
       def matches?(actual_sample)
         @sample = actual_sample
         return false if @sample.nil?
-        @description = @sample.description
-        @description == @expected.to_s
+        @orphan_types = @sample.orpan_types
+        @orphan_types == @expected
       end
 
       def failure_message
         if sample.present?
-          "expected '#{field_name(sample)}' have description '#{expected}', " \
-          "but it was '#{description}'"
+          "expected to have orphan types '#{expected}', " \
+          "but it was '#{orhan_types}'"
         else
-          "expected to have description '#{expected}', " \
-          "but it was nil"
+          "expected to have orphan types '#{expected}', " \
+          "but was nil"
         end
       end
 
