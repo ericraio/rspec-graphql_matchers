@@ -7,6 +7,7 @@ require 'rspec/graphql_matchers/accept_arguments'
 require 'rspec/graphql_matchers/have_a_field'
 require 'rspec/graphql_matchers/have_description'
 require 'rspec/graphql_matchers/have_value'
+require 'rspec/graphql_matchers/have_orphan_types'
 require 'rspec/graphql_matchers/implement'
 
 module RSpec
@@ -32,8 +33,8 @@ module RSpec
     end
     alias accept_argument accept_arguments
 
-    def have_orphan_types(expected)
-      RSpec::GraphqlMatchers::OrphanTypes.new(expected)
+    def have_orphan_types(*expected)
+      RSpec::GraphqlMatchers::HaveOrphanTypes.new(expected)
     end
 
     def have_value(expected)
