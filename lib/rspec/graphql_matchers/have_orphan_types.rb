@@ -4,14 +4,14 @@ module RSpec
       attr_reader :sample, :expected, :orphan_types
 
       def initialize(*expected)
-        @expected = expected
+        @expected = expected.flatten
       end
 
       def matches?(actual_sample)
         @sample = actual_sample
         return false if @sample.nil?
-        @orphan_types = @sample.orpan_types
-        @orphan_types == @expected
+        @orphan_types = @sample.orphan_types
+        @orphan_types.all? { |type| @expected.include?(type) }
       end
 
       def failure_message
