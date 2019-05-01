@@ -1,7 +1,7 @@
 module RSpec
   module GraphqlMatchers
-    class HaveOrphanTypes
-      attr_reader :sample, :expected, :orphan_types
+    class HavePossibleTypes
+      attr_reader :sample, :expected, :possible_types
 
       def initialize(*expected)
         @expected = expected.flatten
@@ -10,22 +10,22 @@ module RSpec
       def matches?(actual_sample)
         @sample = actual_sample
         return false if @sample.nil?
-        @orphan_types = @sample.orphan_types
-        @orphan_types.all? { |type| @expected.include?(type) }
+        @possible_types = @sample.possible_types
+        @possible_types.all? { |type| @expected.include?(type) }
       end
 
       def failure_message
         if sample.present?
-          "expected to have orphan types '#{expected}', " \
+          "expected to have possible types '#{expected}', " \
           "but it was '#{orhan_types}'"
         else
-          "expected to have orphan types '#{expected}', " \
+          "expected to have possible types '#{expected}', " \
           "but was nil"
         end
       end
 
       def description
-        "have orphan types '#{expected}'"
+        "have possible types '#{expected}'"
       end
 
       private
