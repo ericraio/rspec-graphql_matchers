@@ -6,6 +6,7 @@ require 'rspec/graphql_matchers/be_a_connection'
 require 'rspec/graphql_matchers/accept_arguments'
 require 'rspec/graphql_matchers/have_a_field'
 require 'rspec/graphql_matchers/have_description'
+require 'rspec/graphql_matchers/have_node_type'
 require 'rspec/graphql_matchers/have_graphql_name'
 require 'rspec/graphql_matchers/have_value'
 require 'rspec/graphql_matchers/have_orphan_types'
@@ -68,6 +69,10 @@ module RSpec
 
     def have_graphql_name(expected)
       RSpec::GraphqlMatchers::HaveGraphqlName.new(expected)
+    end
+
+    def have_node_type(expected)
+      RSpec::GraphqlMatchers::HaveNodeType.new(expected)
     end
 
     # rubocop:disable Style/PredicateName
