@@ -10,7 +10,7 @@ module RSpec
       def matches?(actual_sample)
         @sample = actual_sample
         return false if @sample.nil?
-        @node_type = @sample.node_type
+        @node_type = @sample.node_type.to_s
         @node_type == @expected.to_s
       end
 
