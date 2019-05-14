@@ -15,6 +15,7 @@ require 'rspec/graphql_matchers/have_field_class'
 require 'rspec/graphql_matchers/have_object_class'
 require 'rspec/graphql_matchers/have_input_object_class'
 require 'rspec/graphql_matchers/implement'
+require 'rspec/graphql_matchers/prepare_with'
 
 module RSpec
   module Matchers
@@ -73,6 +74,10 @@ module RSpec
 
     def have_node_type(expected)
       RSpec::GraphqlMatchers::HaveNodeType.new(expected)
+    end
+
+    def prepare_with(expected)
+      RSpec::GraphqlMatchers::PrepareWith.new(expected)
     end
 
     # rubocop:disable Style/PredicateName
