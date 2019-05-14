@@ -18,25 +18,25 @@ module RSpec
 
       def failure_message
         if sample.present?
-          "expected field '#{field_name(sample)}' to prepare"
+          "expected field '#{field_name(sample)}' to prepare the results"
         else
-          "expected field to be nullable, " \
+          "expected field to prepare the results, " \
           "but the field was nil"
         end
       end
 
       def failure_message_when_negated
         if sample.present?
-          "expected field '#{field_name(sample)}' to not be nullable, " \
+          "expected field '#{field_name(sample)}' to prepare the results"
           "but it was nullable"
         else
-          "expected field to not be nullable, " \
+          "expected field to prepare the results, " \
           "but the field was nil"
         end
       end
 
       def description
-        "be null type"
+        "be prepared"
       end
 
       private

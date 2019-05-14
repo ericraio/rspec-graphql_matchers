@@ -76,8 +76,8 @@ module RSpec
       RSpec::GraphqlMatchers::HaveNodeType.new(expected)
     end
 
-    def prepare_with(expected)
-      RSpec::GraphqlMatchers::PrepareWith.new(expected)
+    def prepare_with(result, ctx, &block)
+      RSpec::GraphqlMatchers::PrepareWith.new(result, ctx, &block)
     end
 
     # rubocop:disable Style/PredicateName
