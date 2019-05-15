@@ -3,7 +3,7 @@ module RSpec
     class PrepareWith
       attr_reader :sample, :id, :ctx, :block
 
-      def initialize(id, ctx, &block)
+      def initialize(id, ctx, block)
         @id  = id
         @ctx = ctx
         @block = block;
