@@ -77,7 +77,7 @@ module RSpec
     end
 
     def prepare_with(result, ctx, &block)
-      RSpec::GraphqlMatchers::PrepareWith.new(result, ctx, &block)
+      RSpec::GraphqlMatchers::PrepareWith.new(result, ctx, block)
     end
 
     # rubocop:disable Style/PredicateName
