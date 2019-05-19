@@ -16,7 +16,7 @@ module RSpec
 
       def failure_message
         if sample.present?
-          "expected '#{field_name(sample)}' have mutation '#{expected}', " \
+          "expected '#{field_name(sample)}' to have mutation '#{expected}', " \
           "but it was '#{mutation}'"
         else
           "expected to have mutation '#{expected}', " \
