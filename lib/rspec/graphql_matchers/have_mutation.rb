@@ -10,7 +10,7 @@ module RSpec
       def matches?(actual_sample)
         @sample = actual_sample
         return false if @sample.nil?
-        @mutation = @sample.mutation
+        @mutation = @sample.mutation.to_s
         @mutation == @expected.to_s
       end
 
