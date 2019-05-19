@@ -6,6 +6,7 @@ require 'rspec/graphql_matchers/be_a_connection'
 require 'rspec/graphql_matchers/accept_arguments'
 require 'rspec/graphql_matchers/have_a_field'
 require 'rspec/graphql_matchers/have_description'
+require 'rspec/graphql_matchers/have_mutation'
 require 'rspec/graphql_matchers/have_node_type'
 require 'rspec/graphql_matchers/have_graphql_name'
 require 'rspec/graphql_matchers/have_value'
@@ -66,6 +67,10 @@ module RSpec
 
     def have_description(expected)
       RSpec::GraphqlMatchers::HaveDescription.new(expected)
+    end
+
+    def have_mutation(expected)
+      RSpec::GraphqlMatchers::HaveMutation.new(expected)
     end
 
     def have_graphql_name(expected)
