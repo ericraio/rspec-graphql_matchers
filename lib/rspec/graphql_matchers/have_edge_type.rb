@@ -10,7 +10,7 @@ module RSpec
       def matches?(actual_sample)
         @sample = actual_sample
         return false if @sample.nil?
-        @edge_type = @sample.edge_type.to_s
+        @edge_type = @sample.instance_variable_get("@edge_type").to_s
         @edge_type == @expected.to_s
       end
 
