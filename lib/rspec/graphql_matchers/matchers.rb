@@ -8,6 +8,7 @@ require 'rspec/graphql_matchers/have_a_field'
 require 'rspec/graphql_matchers/have_description'
 require 'rspec/graphql_matchers/have_mutation'
 require 'rspec/graphql_matchers/have_node_type'
+require 'rspec/graphql_matchers/have_edge_type'
 require 'rspec/graphql_matchers/have_graphql_name'
 require 'rspec/graphql_matchers/have_value'
 require 'rspec/graphql_matchers/have_orphan_types'
@@ -79,6 +80,10 @@ module RSpec
 
     def have_node_type(expected)
       RSpec::GraphqlMatchers::HaveNodeType.new(expected)
+    end
+
+    def have_edge_type(expected)
+      RSpec::GraphqlMatchers::HaveEdgeType.new(expected)
     end
 
     def prepare_with(result, ctx, &block)
